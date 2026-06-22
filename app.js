@@ -1363,8 +1363,7 @@ function renderReview(){
     // take first N wrong questions
     const ids = wrong.slice(0,10).map(x=>x.question.id);
     const picked = questionsData.questions.filter(q=>ids.includes(q.id));
-    practiceState = {mode:'incorrect', count:picked.length, index:0, questions:picked, answers:{}, startedAt:nowISO(), returnHash: location.hash || '#/dashboard'};
-    location.hash = '#/practice';
+    practiceState = {mode:'incorrect', count:picked.length, index:0, questions:picked, answers:{}, startedAt:nowISO(), returnHash: location.hash || '#/review'};
     renderPracticeSession();
   };
 }
@@ -1562,8 +1561,7 @@ function startLessonQuiz(moduleId, lessonId){
   }
 
   const picked = pool.sort(()=>Math.random()-0.5).slice(0, Math.min(5, pool.length));
-  practiceState = {mode:'lesson', count:picked.length, index:0, questions:picked, answers:{}, startedAt: nowISO(), lessonModuleId: moduleId, lessonId, returnHash: location.hash || '#/dashboard'};
-  location.hash = '#/practice';
+  practiceState = {mode:'lesson', count:picked.length, index:0, questions:picked, answers:{}, startedAt: nowISO(), lessonModuleId: moduleId, lessonId, returnHash: location.hash || '#/modules'};
   renderPracticeSession();
 }
 
