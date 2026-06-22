@@ -693,6 +693,10 @@ function renderPractice(){
 }
 
 function startPracticeSession(mode, count){
+  // Cacher le setup
+  const setupCard = document.querySelector('#view > div:first-child > div:first-child');
+  if(setupCard) setupCard.style.display = 'none';
+
   // choose questions
   const all = questionsData.questions;
   const weakTopics = new Set(getWeakTopics().map(t=>t.id));
@@ -851,6 +855,11 @@ function renderPracticeSession(){
     }
   };
 
+  // Si réponse déjà donnée mais pas locked (option sélectionnée), enable Valider
+  if(practiceState.answers[q.id] && !practiceState.answers[q.id].locked){
+    btnVal.disabled = false;
+  }
+
   // If already answered
   const already = practiceState.answers[q.id];
   if(already?.locked){
@@ -906,6 +915,8 @@ function finishPracticeSession(){
   practiceState = null;
   state && saveState();
   renderSidebarChapters();
+  // Re-afficher le setup si on retourne à l'entraînement
+  renderPractice();
 }
 
 function renderMockSetup(){
