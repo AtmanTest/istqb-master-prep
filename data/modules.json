@@ -1,0 +1,104 @@
+{
+  "chapters": [
+    {"id":"m1","moduleId":"m1","code":"CH1","title":"Fondamentaux des tests"},
+    {"id":"m2","moduleId":"m2","code":"CH2","title":"Tester tout au long du SDLC"},
+    {"id":"m3","moduleId":"m3","code":"CH3","title":"Conception des tests"},
+    {"id":"m4","moduleId":"m4","code":"CH4","title":"Techniques de test"},
+    {"id":"m5","moduleId":"m5","code":"CH5","title":"Gestion des activités de test"},
+    {"id":"m6","moduleId":"m6","code":"CH6","title":"Outils de test"}
+  ],
+  "topics": [
+    {"id":"tp_test_objectifs","label":"Objectifs & valeur du test"},
+    {"id":"tp_tester_vs_deboguer","label":"Tester vs déboguer"},
+    {"id":"tp_7_principes","label":"7 principes du test"},
+    {"id":"tp_contexte_process","label":"Processus & contexte"},
+    {"id":"tp_risques","label":"Gestion des risques"},
+    {"id":"tp_pilotage_contrôle","label":"Pilotage & contrôle"},
+    {"id":"tp_revue_stat","label":"Revue statique"},
+    {"id":"tp_cas_test","label":"Objets de test & traçabilité"},
+    {"id":"tp_niveaux","label":"Niveaux & quadrants"},
+    {"id":"tp_conception","label":"Conception des tests"},
+    {"id":"tp_techniques","label":"Techniques de test"},
+    {"id":"tp_automatisation","label":"Automatisation : bénéfices & risques"}
+  ],
+  "modules": [
+    {
+      "id":"m1",
+      "chapterCode":"CH1",
+      "difficultyLabel":"Fondation",
+      "title":"Fondamentaux des tests",
+      "description":"Comprendre pourquoi on teste, les concepts clés et les principes qui guident toutes les activités de test.",
+      "longDescription":"Un socle commun : objectifs, différence test/débogage, activités, testware, rôles, traçabilité et principes clés.",
+      "lessons": [
+        {"id":"l1_1","tag":"Concepts","title":"Tester : pourquoi et quoi ?","description":"Objectifs du test, produits testés, qualité et réduction du risque.","questionsCount":8,"topicIds":["tp_test_objectifs","tp_cas_test"]},
+        {"id":"l1_2","tag":"Qualité","title":"Test vs débogage + erreurs/défauts/défaillances","description":"Séparer les activités et comprendre la chaîne Erreur → Défaut → Défaillance.","questionsCount":8,"topicIds":["tp_tester_vs_deboguer"]},
+        {"id":"l1_3","tag":"Guidage","title":"7 principes du test","description":"L’idée des défauts présents, l’impossibilité du test exhaustif et l’intérêt de tester tôt.","questionsCount":8,"topicIds":["tp_7_principes","tp_contexte_process"]}
+      ]
+    },
+    {
+      "id":"m2",
+      "chapterCode":"CH2",
+      "difficultyLabel":"Fondation",
+      "title":"Tester tout au long du SDLC",
+      "description":"Intégrer le test aux processus de développement et organiser les activités selon le contexte.",
+      "longDescription":"Processus de test, activités communes, rôles, niveaux de test, quadrants orientés technologie/métier.",
+      "lessons": [
+        {"id":"l2_1","tag":"Contexte","title":"Processus de test et itérations","description":"Planifier, analyser, concevoir, implémenter, exécuter et clôturer.","questionsCount":8,"topicIds":["tp_contexte_process","tp_cas_test"]},
+        {"id":"l2_2","tag":"Niveaux","title":"Niveaux de test & couverture","description":"Du test de composants aux tests bout-en-bout.","questionsCount":8,"topicIds":["tp_niveaux"]},
+        {"id":"l2_3","tag":"Rôles","title":"Rôles & collaboration","description":"Le testeur agit avec d’autres acteurs pour atteindre les objectifs.","questionsCount":8,"topicIds":["tp_contexte_process"]}
+      ]
+    },
+    {
+      "id":"m3",
+      "chapterCode":"CH3",
+      "difficultyLabel":"Fondation",
+      "title":"Conception des tests",
+      "description":"Dériver des conditions de test et construire des cas testables et traçables.",
+      "longDescription":"Analyse de base de test, objectifs, couverture, définition des conditions et des cas de test.",
+      "lessons": [
+        {"id":"l3_1","tag":"Traçabilité","title":"Base de test → conditions → cas","description":"Traçabilité bidirectionnelle et sélection des conditions testables.","questionsCount":8,"topicIds":["tp_conception","tp_cas_test"]},
+        {"id":"l3_2","tag":"Niveau de risque","title":"Design basé sur le risque","description":"Utiliser la gestion des risques pour guider la conception.","questionsCount":8,"topicIds":["tp_risques","tp_conception"]},
+        {"id":"l3_3","tag":"Préparation","title":"Données & environnement","description":"Testware : données, scripts, suites et environnement configuré.","questionsCount":8,"topicIds":["tp_conception"]}
+      ]
+    },
+    {
+      "id":"m4",
+      "chapterCode":"CH4",
+      "difficultyLabel":"Fondation",
+      "title":"Techniques de test",
+      "description":"Choisir et appliquer des techniques pour obtenir la couverture attendue.",
+      "longDescription":"Techniques de conception, techniques de couverture, pensée orientée risque, et approche quadrants.",
+      "lessons": [
+        {"id":"l4_1","tag":"Techniques","title":"Techniques de test (vue d’ensemble)","description":"Choisir des techniques adaptées aux objectifs de couverture.","questionsCount":8,"topicIds":["tp_techniques","tp_conception"]},
+        {"id":"l4_2","tag":"Non-fonctionnel","title":"Non-fonctionnel : penser système","description":"Performance, sécurité, robustesse : tester le « comment » et le « non attendu ».","questionsCount":8,"topicIds":["tp_techniques"]},
+        {"id":"l4_3","tag":"Statique","title":"Revue statique (approche)","description":"Rechercher des défauts tôt avec des revues et analyses.","questionsCount":8,"topicIds":["tp_revue_stat"]}
+      ]
+    },
+    {
+      "id":"m5",
+      "chapterCode":"CH5",
+      "difficultyLabel":"Fondation",
+      "title":"Gestion des activités de test",
+      "description":"Planifier, estimer, piloter, contrôler et clore les activités.",
+      "longDescription":"Risques, métriques, reporting, gestion de configuration, gestion des défauts.",
+      "lessons": [
+        {"id":"l5_1","tag":"Planification","title":"Piloter & contrôler","description":"Comparer progrès réel vs plan, ajuster priorités, ressources et calendrier.","questionsCount":8,"topicIds":["tp_pilotage_contrôle"]},
+        {"id":"l5_2","tag":"Risques","title":"Analyse & contrôle des risques","description":"Identifier, évaluer (probabilité/impact), atténuer et surveiller.","questionsCount":8,"topicIds":["tp_risques"]},
+        {"id":"l5_3","tag":"Clôture","title":"Reporting & clôture","description":"Rapports d’avancement et de clôture : leçons apprises.","questionsCount":8,"topicIds":["tp_pilotage_contrôle","tp_contexte_process"]}
+      ]
+    },
+    {
+      "id":"m6",
+      "chapterCode":"CH6",
+      "difficultyLabel":"Fondation",
+      "title":"Outils de test",
+      "description":"Comprendre le rôle des outils et les risques liés à l’automatisation.",
+      "longDescription":"Outils de gestion, statiques, de conception, d’exécution/couverture, DevOps et outillage non-fonctionnel.",
+      "lessons": [
+        {"id":"l6_1","tag":"Outillage","title":"Types d’outils & support","description":"Outils de gestion, statique, conception, exécution et collaboration.","questionsCount":8,"topicIds":["tp_automatisation"]},
+        {"id":"l6_2","tag":"Automatisation","title":"Bénéfices vs risques","description":"Time-to-market, réduction d’erreurs, mais aussi dépendance & attentes irréalistes.","questionsCount":8,"topicIds":["tp_automatisation"]},
+        {"id":"l6_3","tag":"DevOps","title":"Automatisation dans un pipeline","description":"Intégration continue / livraison continue : garder la qualité au fil de la chaîne.","questionsCount":8,"topicIds":["tp_automatisation"]}
+      ]
+    }
+  ]
+}
