@@ -738,8 +738,15 @@ function startPracticeSession(mode, count){
 
 function renderPracticeSession(){
   const v = document.getElementById('view');
-  const sessionEl = document.getElementById('practiceSession');
-  if(!sessionEl) return;
+  let sessionEl = document.getElementById('practiceSession');
+  if(!sessionEl){
+    // Créer le conteneur s'il n'existe pas (appel depuis module/review)
+    sessionEl = document.createElement('div');
+    sessionEl.id = 'practiceSession';
+    sessionEl.style.display = 'block';
+    v.innerHTML = '';
+    v.appendChild(sessionEl);
+  }
   sessionEl.style.display='block';
 
   const q = practiceState.questions[practiceState.index];
@@ -912,11 +919,17 @@ function finishPracticeSession(){
   v.innerHTML='';
   v.appendChild(el);
 
+  const returnHash = practiceState?.returnHash;
   practiceState = null;
   state && saveState();
   renderSidebarChapters();
-  // Re-afficher le setup si on retourne à l'entraînement
-  renderPractice();
+  // Revenir à la vue d'origine si c'était un quiz de leçon ou une revue
+  if(returnHash && returnHash !== '#/practice'){
+    location.hash = returnHash;
+    rerender();
+  } else {
+    renderPractice();
+  }
 }
 
 function renderMockSetup(){
@@ -1350,7 +1363,8 @@ function renderReview(){
     // take first N wrong questions
     const ids = wrong.slice(0,10).map(x=>x.question.id);
     const picked = questionsData.questions.filter(q=>ids.includes(q.id));
-    practiceState = {mode:'incorrect', count:picked.length, index:0, questions:picked, answers:{}, startedAt:nowISO()};
+    practiceState = {mode:'incorrect', count:picked.length, index:0, questions:picked, answers:{}, startedAt:nowISO(), returnHash: location.hash || '#/dashboard'};
+    location.hash = '#/practice';
     renderPracticeSession();
   };
 }
@@ -1548,14 +1562,9 @@ function startLessonQuiz(moduleId, lessonId){
   }
 
   const picked = pool.sort(()=>Math.random()-0.5).slice(0, Math.min(5, pool.length));
-  practiceState = {mode:'lesson', count:picked.length, index:0, questions:picked, answers:{}, startedAt: nowISO(), lessonModuleId: moduleId, lessonId};
-
+  practiceState = {mode:'lesson', count:picked.length, index:0, questions:picked, answers:{}, startedAt: nowISO(), lessonModuleId: moduleId, lessonId, returnHash: location.hash || '#/dashboard'};
+  location.hash = '#/practice';
   renderPracticeSession();
-
-  // When finished, mark completed if all locked and at least 60%.
-  // We will detect completion by intercepting finishPracticeSession via state variable.
-  const origFinish = window.__finishPracticeSession;
-  window.__finishPracticeSession = () => origFinish;
 }
 
 function startTimer(){
